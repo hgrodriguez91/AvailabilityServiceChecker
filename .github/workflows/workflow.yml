@@ -8,13 +8,11 @@ on:
 jobs:
   Builds: 
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/checkout@v2
-        with:
-          path: service_checker_client         
+    steps:      
+      - uses: actions/checkout@v2             
       - uses: actions/setup-node@v2
         with:
+          repossitory: hgrodriguez91/AvailabilityServiceChecker
           path: service_checker_client
           node-version: '14'    
       - run: npm install     
