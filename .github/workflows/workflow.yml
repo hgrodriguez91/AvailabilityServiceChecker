@@ -13,7 +13,7 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           repository: hgrodriguez91/AvailabilityServiceChecker/service_checker_client
-          path: service_checker_client
+          path: ~AvailabilityServiceChecker/service_checker_client
           node-version: '14'    
       - run: npm install     
       - run: npm test    
