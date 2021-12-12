@@ -13,7 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: ~/service_checker_client         
+          repository: hgrodriguez91/AvailabilityServiceChecker
+          working_directory: service_checker_client
           ref: main
       - name: Angular Full CI
         uses: colbyhill21/angular-full-ci/@v1.0
