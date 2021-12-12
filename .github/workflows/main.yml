@@ -1,0 +1,32 @@
+
+
+name: Build 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+ 
+  build:
+    runs-on: ubuntu-latest
+    steps:
+     
+      - uses: actions/checkout@v2
+
+      - name: Npm install angular project
+        run: cd service_checker_client && npm install
+        
+      - name: Install angular-cli
+        run: sudo npm install -g @angular/cli > /dev/null
+        
+      - name: Install node-sass
+        run: cd service_checker_client && sudo npm install --save-dev  --unsafe-perm node-sass
+        
+      - name: Rebuild node-sass
+        run: cd service_checker_client && npm rebuild node-sass
+        
+      - name: Build angular project with build:dev
+        run: cd service_checker_client && ng build
+        
