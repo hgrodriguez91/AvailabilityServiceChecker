@@ -11,6 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          repository: AvailabilityServiceChecker
+          path: service_checker_client
           persist-credentials: false
       - uses: actions/setup-node@v2
         with:
