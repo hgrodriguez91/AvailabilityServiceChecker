@@ -1,0 +1,63 @@
+<div class="card m-3">
+    <div class="table-header grid justify-content-around shadow-4 card-container p-4">
+        <div>
+            <h1>Availabilty Checker</h1>
+            Last actualization date: {{lastRecordUpdate}}
+        </div>
+        <div>
+            Filter By Date
+            <div class="">
+                <p-calendar [(ngModel)]="value" [showTime]="true" [showSeconds]="true" inputId="time"></p-calendar>
+                <p-button label="Search" icon="pi pi-search" [loading]="search" (click)="loadSearch()"></p-button>
+            </div>
+        </div>
+        <div>
+            Filter by Province
+            <div class="" id="provinceSelector">
+                <p-dropdown [options]="provinces" [(ngModel)]="province" placeholder="Province" [showClear]="true"
+                    (onChange)="filterProvince()"></p-dropdown>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-5 m-3 p-3 justify-content-center">
+    <div class="flex flex-column card-container ">
+        <div class=" m-5">
+            <div *ngIf="hasErrors" class="flex  justify-content-center align-content-center mb-3">
+                <h2 class="flex align-content-start ">Opss! Something went wrong fetching the data.</h2> 
+                <p-button label="Reload Page" (onClick)="reload()" icon="pi pi-replay" style="margin-top: 14px;" styleClass="p-button-sm  p-button-success p-button-outlined"></p-button>
+            </div>
+            <div *ngIf="loadingData" class="flex grid justify-content-center align-content-center">
+                <div >
+                    <div>
+                        <p-progressSpinner></p-progressSpinner>
+                    </div>
+                    <p class="text-center">Loading... </p>
+                </div>
+            </div>
+            <div *ngIf="!loadingData">
+                <div class="flex justify-content-end text-end"><h4>Province with the worst availability of services : {{lowAvProvince.name}}</h4>  </div>
+                <p-table  [value]="data" styleClass="p-datatable-striped" responsiveLayout="scroll">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th *ngFor="let col of services">
+                                {{col}}
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-data>
+                        <tr>
+                            <td *ngFor="let serv of services">
+                                <p *ngIf="serv=='Province'">{{data[serv]}}</p>
+                                <button *ngIf="serv!='Province'" pButton pRipple type="button" [icon]="icons[data[serv]]"
+                                    [class]="'p-button-rounded '+ buttonClass[data[serv]] + ' p-button-text'"
+                                    [pTooltip]="'Status: '+ data[serv] "></button>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+    </div>
+</div>
