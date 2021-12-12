@@ -11,6 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          repository: hgrodriguez91/AvailabilityServiceChecker
           path: service_checker_client
       - uses: actions/setup-node@v2
         with:
