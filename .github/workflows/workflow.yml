@@ -15,6 +15,7 @@ jobs:
           path: service_checker_client         
       - uses: actions/setup-node@v2
         with:
+          path: service_checker_client
           node-version: '14'    
       - run: npm install     
       - run: npm test    
