@@ -12,7 +12,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:     
       - uses: actions/checkout@v2
-      - run: cd service_checker_client && npm install
-      - run: cd service_checker_client && npm test
+      - run: cd service_checker_client && npm install      
       - run: cd service_checker_client && npm lint
       - run: cd service_checker_client && npm build
