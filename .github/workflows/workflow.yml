@@ -1,3 +1,4 @@
+
 name: Build 
 on:
   push:
@@ -6,16 +7,22 @@ on:
     branches: [ main ]
   workflow_dispatch:
 jobs:
-  Builds: 
+ 
+  build:
     runs-on: ubuntu-latest
-    steps:      
-      - uses: actions/checkout@v2             
-      - uses: actions/setup-node@v2
-        with:
-          repository: hgrodriguez91/AvailabilityServiceChecker/service_checker_client
-          path: AvailabilityServiceChecker/service_checker_client
-          node-version: '14'    
-      - run: npm install     
-      - run: npm test    
-      - run: npm lint
-      - run: npm build
+    steps:
+     
+      - uses: actions/checkout@v2
+
+      - name: Npm install angular project
+        run: cd service_checker_client && npm install        
+   
+      - name: Install node-sass
+        run: cd service_checker_client && sudo npm install --save-dev  --unsafe-perm node-sass
+        
+      - name: Rebuild node-sass
+        run: cd service_checker_client && npm rebuild node-sass
+        
+      - name: Build angular project with build:dev
+        run: cd service_checker_client && ng build
+        
