@@ -13,11 +13,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
+          repository: AvailabilityServiceChecker/service_checker_client
           path: service_checker_client
+          ref: main
       - name: Angular Full CI
         uses: colbyhill21/angular-full-ci/@v1.0
         with:
-          working_directory: ~service_checker_client
           testcommand: run test:ci
           mocha: true
       
