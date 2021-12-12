@@ -10,19 +10,9 @@ jobs:
  
   build:
     runs-on: ubuntu-latest
-    steps:
-     
+    steps:     
       - uses: actions/checkout@v2
-
-      - name: Npm install angular project
-        run: cd service_checker_client && npm install        
-   
-      - name: Install node-sass
-        run: cd service_checker_client && sudo npm install --save-dev  --unsafe-perm node-sass
-        
-      - name: Rebuild node-sass
-        run: cd service_checker_client && npm rebuild node-sass
-        
-      - name: Build angular project with build:dev
-        run: cd service_checker_client && ng build
-        
+      - run: cd service_checker_client && npm install
+      - run: cd service_checker_client && npm test
+      - run: cd service_checker_client && npm lint
+      - run: cd service_checker_client && npm build
