@@ -15,7 +15,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
            node-version: '14'        
-      - run: cd service_checker_client && npm install  
+      - run: npm install -g @angular/cli > /dev/null
+      - run: cd service_checker_client && npm install
       - run: cd service_checker_client && ng add @angular-eslint/schematics  
       - run: cd service_checker_client && npm lint
       - run: cd service_checker_client && npm build
