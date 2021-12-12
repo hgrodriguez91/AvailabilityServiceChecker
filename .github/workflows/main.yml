@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          repository: AvailabilityServiceChecker/service_checker_client
+          repository: AvailabilityServiceChecker
           path: service_checker_client
           ref: main
       - name: Angular Full CI
