@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2             
       - uses: actions/setup-node@v2
         with:
-          repossitory: hgrodriguez91/AvailabilityServiceChecker
+          repository: hgrodriguez91/AvailabilityServiceChecker
           path: service_checker_client
           node-version: '14'    
       - run: npm install     
