@@ -17,3 +17,4 @@ jobs:
         with:
           testcommand: run test:ci
           mocha: true
+          working_directory: ~/AvailabilityServiceChecker/service_checker_client
