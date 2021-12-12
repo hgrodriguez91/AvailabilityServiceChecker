@@ -8,13 +8,12 @@ on:
     branches: [ main ]
   workflow_dispatch:
 jobs:
-  example_job:
+  Builds: 
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Angular Full CI
         uses: colbyhill21/angular-full-ci/@v1.0
         with:
-          working_directory: ~/AvailabilityServiceChecker/service_checker_client
           testcommand: run test:ci
           mocha: true
