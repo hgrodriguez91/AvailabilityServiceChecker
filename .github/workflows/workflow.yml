@@ -1,0 +1,22 @@
+name: Build 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+jobs:
+  Builds: 
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          repository: hgrodriguez91/AvailabilityServiceChecker
+          path: AvailabilityServiceChecker/service_checker_client         
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'    
+      - run: npm install     
+      - run: npm test    
+      - run: npm lint
+      - run: npm build
