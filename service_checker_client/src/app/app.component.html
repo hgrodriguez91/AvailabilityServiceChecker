@@ -49,8 +49,8 @@
                     <ng-template pTemplate="body" let-data>
                         <tr>
                             <td *ngFor="let serv of services">
-                                <p *ngIf="serv=='Province'">{{data[serv]}}</p>
-                                <button *ngIf="serv!='Province'" pButton pRipple type="button" [icon]="icons[data[serv]]"
+                                <p *ngIf="serv==='Province'">{{data[serv]}}</p>
+                                <button *ngIf="serv!=='Province'" pButton pRipple type="button" [icon]="icons[data[serv]]"
                                     [class]="'p-button-rounded '+ buttonClass[data[serv]] + ' p-button-text'"
                                     [pTooltip]="'Status: '+ data[serv] "></button>
                             </td>
